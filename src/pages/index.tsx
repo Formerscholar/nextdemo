@@ -11,12 +11,12 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(startClock())
-  }, [dispatch])
+  }, [])
 
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>teacher</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <code>{JSON.stringify(state, null, 4)}</code>
