@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Button, message } from 'antd'
 import { startClock } from '../store/actions'
 import { getLoginCode, getLogin } from '../services/login'
+import request from '../services'
 
 // 服务端渲染
 export async function getServerSideProps() {
@@ -18,14 +19,26 @@ export async function getServerSideProps() {
   return { props: { msg } }
 }
 
-
-
 export default function Home(props) {
   console.log('====================================')
   console.log(props)
   console.log('====================================')
   const state = useSelector((state) => state)
   const dispatch = useDispatch()
+
+  // 表单提交请求
+  async function handleClick() {
+    let res = await request({
+      url: '/api/home/hello',
+      method: 'GET',
+      params: {
+        id: 123,
+      },
+    })
+    console.log('====================================')
+    console.log(res)
+    console.log('====================================')
+  }
 
   useEffect(() => {
     dispatch(startClock())
@@ -38,8 +51,10 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <code>{JSON.stringify(state, null, 4)}</code>
-      <Button type="primary">hello</Button>
-      <span>{ props.msg}</span>
+      <Button type="primary" onClick={handleClick}>
+        hello
+      </Button>
+      <span>{props.msg}</span>
     </div>
   )
 }
