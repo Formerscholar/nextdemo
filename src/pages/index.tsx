@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import Head from 'next/head'
-import '../styles/index.less'
+import '@/src/styles/index.less'
 import { useSelector, useDispatch } from 'react-redux'
 import { Button, message } from 'antd'
-import { startClock } from '../store/actions'
-import { getLoginCode, getLogin } from '../services/login'
-import request from '../services'
+import { startClock } from '@/src/store/actions'
+import { getLoginCode } from '@/src/services/login'
+import request from '@/src/services'
 
 // 服务端渲染
 export async function getServerSideProps() {

@@ -26,6 +26,7 @@ module.exports = withPlugins([withLess, withCss], {
     },
   },
   webpack(config) {
+    config.resolve.alias['@'] = path.resolve(__dirname)
     if (config.externals) {
       const includes = [/antd-mobile/]
       config.externals = config.externals.map((external) => {
