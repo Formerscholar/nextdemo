@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux'
-import { useStore } from '../store/store'
-import '../styles/globals.less'
+import { useStore } from '@/store/store'
+import '@/styles/globals.less'
 
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState)

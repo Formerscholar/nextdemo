@@ -5,11 +5,14 @@ import { useRouter } from 'next/router'
 import '@/styles/index.less'
 import { useSelector, useDispatch } from 'react-redux'
 import { Button, message } from 'antd'
-import { startClock } from '@/store/actions'
 import { getLoginCode } from '@/services/login'
 import request from '@/services'
+import { startClock } from '@/store/actions'
 
-// 服务端渲染 Server-side rendering 
+import dynamic from 'next/dynamic' //懒加载组件
+const Phone = dynamic(import('@/components/phone/phone')) //懒加载组件
+
+// 服务端渲染 Server-side rendering
 export async function getServerSideProps() {
   const { code, msg } = await getLoginCode({
     mobile: '18083795906',
@@ -59,9 +62,9 @@ export default function Home(props) {
   }
 
   const linkDeailClick = () => {
-    console.log('====================================');
-    console.log('prefetch');
-    console.log('====================================');
+    console.log('====================================')
+    console.log('prefetch')
+    console.log('====================================')
     router.push(`/list?data=obj`)
   }
 
@@ -100,6 +103,7 @@ export default function Home(props) {
       </Button>
       <br />
       <br />
+      <Phone />
     </div>
   )
 }
