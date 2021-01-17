@@ -3,9 +3,6 @@ import { useRouter } from 'next/router'
 
 export default function Detail() {
   const router = useRouter()
-  router.events.on('routeChangeStart', (...ages) => {
-    console.log('1.routeChangeStart', ages)
-  })
   console.log('====================================')
   console.log(router.query)
   console.log('====================================')
